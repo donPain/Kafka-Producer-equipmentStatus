@@ -26,8 +26,13 @@ public class EquipamentStatusProducer {
         @EventListener(ApplicationReadyEvent.class)
         public void sendStatus(){
         String topic = "EQUIPMENT_STATUS_2";
-        for(var i=0;i<100;i++){
-                String clientId = UUID.randomUUID().toString();
+        String clientId = "";
+        for(var i=0;i<14000;i++){
+                if (i<=100){
+                        clientId = "VictorVargas";
+                } else {
+                        clientId = "donzelitos";
+                }
                 String equipamentId = UUID.randomUUID().toString();
                 String Key = clientId + "_" + equipamentId;
                 kafkaTemplate.send(topic, Key, new EquipamentStatus(clientId,equipamentId,"online", LocalDate.now().toString()));

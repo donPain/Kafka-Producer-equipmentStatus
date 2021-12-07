@@ -10,9 +10,6 @@ public class EquipamentStatus {
         this.since = since;
     };
 
-
-
-
     public String getClientId() {
         return clientId;
     }
