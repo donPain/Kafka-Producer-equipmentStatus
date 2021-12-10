@@ -1,5 +1,6 @@
 package com.kafka.producer.demo.config;
 
+import com.kafka.producer.demo.model.Kijo;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 import com.kafka.producer.demo.model.EquipamentStatus;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -38,6 +39,28 @@ public class KafkaConfig {
         return new DefaultKafkaProducerFactory<>(config);
 
     }
+    @Bean
+    public ProducerFactory<String, Kijo>
+    producerKijo()
+    {
+        Map<String, Object> config
+                = new HashMap<>();
+        config.put(
+                ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
+                "127.0.0.1:9092");
+
+        config.put(
+                ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
+                StringSerializer.class);
+
+        config.put(
+                ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
+                JsonSerializer.class);
+        config.put(JsonSerializer.TYPE_MAPPINGS,"Kijo:com.kafka.producer.demo.model.Kijo");
+
+        return new DefaultKafkaProducerFactory<>(config);
+
+    }
 
     @Bean
     public KafkaTemplate<String, EquipamentStatus>
@@ -45,5 +68,12 @@ public class KafkaConfig {
     {
         return new KafkaTemplate<>(
                 producerFactory());
+    }
+    @Bean
+    public KafkaTemplate<String, Kijo>
+    kijoProducerTemplate()
+    {
+        return new KafkaTemplate<>(
+                producerKijo());
     }
 }

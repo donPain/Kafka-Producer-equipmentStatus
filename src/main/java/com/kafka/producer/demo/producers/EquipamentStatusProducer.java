@@ -31,7 +31,7 @@ public class EquipamentStatusProducer {
                 if (i<=100){
                         clientId = "VictorVargas";
                 } else {
-                        clientId = "donzelitos";
+                        clientId = "Donzelitos";
                 }
                 String equipamentId = UUID.randomUUID().toString();
                 String Key = clientId + "_" + equipamentId;
