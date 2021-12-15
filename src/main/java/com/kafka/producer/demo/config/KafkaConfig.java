@@ -1,8 +1,8 @@
 package com.kafka.producer.demo.config;
 
+import com.kafka.producer.demo.model.EquipmentStatus;
 import com.kafka.producer.demo.model.Kijo;
 import org.springframework.kafka.support.serializer.JsonSerializer;
-import com.kafka.producer.demo.model.EquipamentStatus;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +18,7 @@ import java.util.Map;
 public class KafkaConfig {
 
     @Bean
-    public ProducerFactory<String, EquipamentStatus>
+    public ProducerFactory<String, EquipmentStatus>
     producerFactory()
     {
         Map<String, Object> config
@@ -34,7 +34,7 @@ public class KafkaConfig {
         config.put(
                 ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
                 JsonSerializer.class);
-        config.put(JsonSerializer.TYPE_MAPPINGS,"equipamentStatus:com.kafka.producer.demo.model.EquipamentStatus");
+        config.put(JsonSerializer.TYPE_MAPPINGS,"EquipmentStatus:com.kafka.producer.demo.model.EquipmentStatus");
 
         return new DefaultKafkaProducerFactory<>(config);
 
@@ -63,7 +63,7 @@ public class KafkaConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, EquipamentStatus>
+    public KafkaTemplate<String, EquipmentStatus>
     kafkaTemplate()
     {
         return new KafkaTemplate<>(
