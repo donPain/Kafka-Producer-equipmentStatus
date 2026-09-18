@@ -1,0 +1,93 @@
+{
+  "format": "datadraw-project",
+  "version": 1,
+  "name": "Java Kafka Streams Pipeline - Partitioned Topics",
+  "folder": "",
+  "nodes": [
+    {
+      "id": "node-java-app-6e1238e4",
+      "type": "processor",
+      "position": {
+        "x": 288,
+        "y": -120
+      },
+      "data": {
+        "technologyId": "java-app",
+        "name": "Java App (Kafka Streams)",
+        "configuration": {}
+      },
+      "measured": {
+        "width": 224,
+        "height": 64
+      },
+      "selected": false,
+      "dragging": false,
+      "hidden": false
+    },
+    {
+      "id": "node-kafka-7cc3cebd",
+      "type": "stream",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "data": {
+        "technologyId": "kafka",
+        "name": "Kafka - ddp_mapa (12 partitions)",
+        "configuration": {}
+      },
+      "measured": {
+        "width": 224,
+        "height": 64
+      },
+      "selected": false,
+      "hidden": false
+    },
+    {
+      "id": "node-kafka-92724e91",
+      "type": "stream",
+      "position": {
+        "x": 600,
+        "y": 36
+      },
+      "data": {
+        "technologyId": "kafka",
+        "name": "Kafka - ddp_mapa_foo (12 partitions)",
+        "configuration": {}
+      },
+      "measured": {
+        "width": 224,
+        "height": 64
+      },
+      "hidden": false,
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-662afb7c",
+      "source": "node-kafka-7cc3cebd",
+      "target": "node-java-app-6e1238e4",
+      "type": "dataflow",
+      "data": {
+        "flowType": "stream",
+        "status": "healthy",
+        "animated": false
+      },
+      "selected": false
+    },
+    {
+      "id": "edge-b81c7989",
+      "source": "node-java-app-6e1238e4",
+      "target": "node-kafka-92724e91",
+      "type": "dataflow",
+      "data": {
+        "flowType": "stream",
+        "status": "healthy",
+        "animated": false
+      },
+      "selected": false
+    }
+  ]
+}
